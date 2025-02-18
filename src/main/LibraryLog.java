@@ -1,9 +1,9 @@
 package main;
 
-public class GUFsLog {
+public class LibraryLog {
 	String className;
 	
-	public <T> GUFsLog (Class<T> incomingClass) {
+	public <T> LibraryLog (Class<T> incomingClass) {
 		className = incomingClass.getName();
 		System.out.println("Class "+className+" initiated.");
 	}

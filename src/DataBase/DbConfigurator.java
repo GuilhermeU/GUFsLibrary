@@ -6,12 +6,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import main.GUFsLog; 
+import main.LibraryLog; 
 
 public class DbConfigurator {
 	Statement dbExecutor;
 	Connection dbConnection;
-	GUFsLog log = new GUFsLog(DbConfigurator.class);
+	LibraryLog log = new LibraryLog(DbConfigurator.class);
 	
 	public DbConfigurator() {
 		log.print("DbConfigurator()");
@@ -46,8 +46,8 @@ public class DbConfigurator {
 		log.print("createBooksTable()");
 		try {
 			String query = "CREATE TABLE books ("+
-					"id INTEGER, "+
-					"name String, "+
+					"id INTEGER NOT NULL, "+
+					"name String NOT NULL, "+
 					"resume String, "+
 					"pages INTEGER"+
 					" )";
@@ -66,5 +66,13 @@ public class DbConfigurator {
 			log.error(e.getMessage());
 			e.printStackTrace();
 		}
+	}
+	
+	public Statement getDbExecutor() {
+		return dbExecutor;
+	}
+	
+	public void setDbExecutor(Statement dbExecutor) {
+		this.dbExecutor = dbExecutor;
 	}
 }
