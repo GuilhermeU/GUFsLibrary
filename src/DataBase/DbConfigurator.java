@@ -46,7 +46,7 @@ public class DbConfigurator {
 		log.print("createBooksTable()");
 		try {
 			String query = "CREATE TABLE books ("+
-					"id INTEGER NOT NULL, "+
+					"id INTEGER NOT NULL PRIMARY KEY, "+
 					"name String NOT NULL, "+
 					"resume String, "+
 					"pages INTEGER"+

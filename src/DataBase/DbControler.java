@@ -13,7 +13,8 @@ public class DbControler {
 		dbExecutor = statement;
 	}
 	
-	public boolean insertData(String query) {
+	public Boolean insertData(String query) {
+		log.print("insertData");
 		try {
 			dbExecutor.execute(query);
 		} catch (SQLException e) {
@@ -21,6 +22,20 @@ public class DbControler {
 			e.printStackTrace();
 		}
 		return false;
+	}
+	
+	public Boolean deleteData(String table, String where) {
+		log.print("deleteData");
+		String query = "DELETE FROM "+table+" WHERE "+where;
+		try {
+			dbExecutor.executeUpdate(query);
+			return true;
+		} catch (SQLException e) {
+			log.error("Error while deleting data from table "+table);
+			e.printStackTrace();
+			return false;
+		}
+
 	}
 	
 	public boolean dropTable(String query) {

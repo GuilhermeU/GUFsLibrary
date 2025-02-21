@@ -16,12 +16,15 @@ public class Mylib {
 		DbControler controler = new DbControler(dataBase.getDbExecutor());
 		//controler.dropTable("books");
 		String query = "INSERT INTO books (id, name, resume, pages) values"
-				+ "(1,'CRONICAS DE SPIDERWICK','Livro sobre crinças e criaturas magicas',575)";
+				+ "(1,'CRONICAS DE SPIDERWICK','Livro sobre crinças e criaturas magicas',575),"
+				+ "(2,'Eragon','livro sobre dragoes e reis maus', 475)";
 		//controler.insertData(query);
 		ResultSet resultSet;
 		try {
 			resultSet = dataBase.getDbExecutor().executeQuery("SELECT * FROM books");
-			log.print("Book name: "+resultSet.getString("name")+" - pages: "+resultSet.getInt("pages"));
+			while(resultSet.next()) {
+				log.print("Book name: "+resultSet.getString("name")+" - pages: "+resultSet.getInt("pages"));
+			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
